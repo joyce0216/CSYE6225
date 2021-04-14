@@ -40,9 +40,8 @@ if __name__ == "__main__":
         if args[0] == 'list':
             download_photos()
         elif args[0] == 'upload' and len(args) > 1:
-        # Parallel uploading
-            with Pool(len(sys.argv) - 1) as pool:
-                pool.map(upload_photo, args[1:])
+            for arg in args[1:]:
+                upload_photo(arg)
         else:
             print_usage()
     else:
